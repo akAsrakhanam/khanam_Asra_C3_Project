@@ -17,14 +17,11 @@ public class Restaurant {
         this.closingTime = closingTime;
     }
 
-        public boolean isRestaurantOpen() {
-            if (( getCurrentTime().isAfter(openingTime)) && (getCurrentTime().isBefore(closingTime))) {
-
-                return true;
-            }
-            else{
-                return false;
-            }
+    public boolean isRestaurantOpen() {
+        if (((getCurrentTime().equals(openingTime)) || getCurrentTime().isAfter(openingTime)) && (getCurrentTime().isBefore(closingTime))) {
+            return true;
+        }
+        return false;
     }
 
     public LocalTime getCurrentTime(){
@@ -70,11 +67,5 @@ public class Restaurant {
     public String getName() {
         return name;
     }
-    public int getOrderTotal(List<String> clickedItems) {
-        int total = 0;
-        for (String clickedItem : clickedItems) {
-            total += findItemByName(clickedItem).getprice();
-        }
-        return total;
-    }
+
 }
